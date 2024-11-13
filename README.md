@@ -1,51 +1,86 @@
 # DNN-Regression-Classification-PyTorch
-This repository explores deep learning with PyTorch for regression and classification tasks. Using NYSE and predictive maintenance datasets, we perform data analysis, build neural networks, tune hyperparameters, and apply regularization techniques to optimize model performance.
 
-# Repository Name:
-DNN-Regression-Classification-PyTorch
+This repository demonstrates the application of deep learning with PyTorch for both regression and classification tasks. Using the NYSE stock data and Predictive Maintenance datasets, we explore data, build neural network models, fine-tune hyperparameters, and apply regularization techniques to improve model performance and generalization.
 
-# README Outline:
-1. Project Overview
-  Purpose: This project focuses on exploring and implementing deep learning techniques for regression and classification tasks using PyTorch.
-  Objectives: Using exploratory data analysis, building deep neural networks, tuning hyperparameters, and applying regularization techniques for model improvement.
-2. Datasets
-  Part 1 - Regression: New York Stock Exchange Dataset
-  Part 2 - Multi-Class Classification: Predictive Maintenance Dataset
-3. Project Workflow
-**   Part 1: Regression
-**   
-    1. Exploratory Data Analysis: Initial analysis and visualizations for understanding features, distribution, and relationships within the NYSE dataset.
+> **Note**: All code and outputs are available in the attached files for easy reference and replication.
 
-    2. Model Building: Design of a Deep Neural Network (DNN) using PyTorch for regression.
+---
 
-    3. Hyperparameter Tuning: Utilization of GridSearchCV from sklearn to find optimal learning rates, optimizers, number of epochs, etc.
+## Repository Outline
 
-    4. Training & Evaluation: Training the model, and plotting Loss vs. Epochs and Accuracy vs. Epochs graphs with interpretation.
+### 1. Project Overview
+   - **Purpose**: Showcase the use of deep learning techniques to solve regression and classification problems using PyTorch.
+   - **Objectives**: Analyze datasets, design neural networks, optimize model performance through hyperparameter tuning, and apply regularization techniques to enhance model robustness.
 
-    5. Regularization Techniques: Comparison of model performance with and without regularization techniques such as Dropout, L2 Regularization, etc.
+### 2. Datasets
+   - **Part 1 - Regression**: NYSE Stock Dataset for predicting stock prices.
+   - **Part 2 - Multi-Class Classification**: Predictive Maintenance Dataset for fault prediction.
 
-**  Part 2: Multi-Class Classification **
-    1. Data Preprocessing: Cleaning, standardizing, and normalizing the Predictive Maintenance dataset.
+---
 
-    2. Exploratory Data Analysis: Further analysis to understand the dataset, feature relationships, and label distribution.
+## Project Workflow
 
-    3. Data Augmentation: Balancing classes through augmentation techniques.
+### Part 1: Regression (NYSE Stock Dataset)
 
-    4. Model Building: Building a multi-class classification DNN using PyTorch.
+1. **Exploratory Data Analysis**: 
+   - **Data Overview**: 
+      - `prices` and `pricesSplitAdjusted`: Around 850,000 rows, providing open, close, low, high prices, and volume for various stocks.
+      - `securities`: Contains company information like GICS Sector and Sub Industry (505 rows).
+      - `fundamentals`: Includes 1,781 rows with financial metrics like Total Revenue and Net Income.
+   - **Summary Statistics**:
+      - Stock prices: Average open and close prices around $70; volume varies widely.
+      - Financial metrics: Variance in metrics (e.g., Accounts Payable, Total Revenue) reflects differences in company size.
 
-    5. Hyperparameter Tuning: Optimizing hyperparameters for performance enhancement.
+   ![Data Visualization](https://github.com/user-attachments/assets/)
 
-    6. Training & Evaluation: Training the model and plotting Loss vs. Epochs and Accuracy vs. Epochs graphs with interpretation.
+2. **Model Building**:
+   - **Data Splitting**: Data is divided into 80% training and 20% testing sets.
+   - **DNN Model Architecture**:
+      - A deep neural network (DNN) with one input layer, three hidden layers (128, 64, 32 neurons), and one output layer, with ReLU activation functions for hidden layers.
+   - **Training Progress**:
+      - Training over 100 epochs showed a significant decrease in training loss, reaching near-zero (0.0002), indicating effective learning.
+   - **Model Evaluation**:
+      - The model achieved a low root mean squared error (RMSE) of 0.0142 on the test set, suggesting accurate prediction on unseen data.
 
-    The training and evaluation suggest a well-trained model with high accuracy and stability, based on the plotted loss and accuracy metrics over 20 epochs. 
-    
-    The model demonstrated strong performance and generalization, achieving a high training accuracy of 99.16% and a stable test accuracy of 99.04% after just a few epochs. Both the            training   and test losses converged rapidly around 0.3227 and remained steady, suggesting that the model reached an optimal state early in the training process with no signs of            overfitting or        underfitting. The early plateau in accuracy and minimal gap between training and test metrics indicate that the model is well-suited for deployment, with little       to gain from additional     training. Overall, the model is efficient, accurate, and reliable for practical use.
+3. **Hyperparameter Tuning**: 
+   - Used `GridSearchCV` from `sklearn` to optimize learning rate, optimizer type, number of epochs, and architecture configurations.
 
-    <img width="905" alt="Screenshot 2024-11-13 at 00 02 05" src="https://github.com/user-attachments/assets/8fa191d9-6a55-4bdf-be5f-b98e7b214fdb">
+4. **Training & Evaluation**:
+   - Plots for **Loss vs. Epochs** and **Accuracy vs. Epochs** provide insight into model learning and convergence.
 
+5. **Regularization Techniques**:
+   - Techniques like Dropout and L2 Regularization were applied to improve model performance and prevent overfitting.
 
-    7. Metrics Calculation: Calculation of accuracy, sensitivity, F1-score, and other metrics.
+### Part 2: Multi-Class Classification (Predictive Maintenance Dataset)
 
-    The regularized model outperforms the original model by achieving similar high accuracy (around 99.2%) and F1 scores (0.99) on both training and test sets, but with better stability        and    generalization across epochs. The training and test losses in the regularized model are lower and converge more consistently, indicating more effective learning and reduced          overfitting.    This is evident in the close alignment between training and test metrics, which suggests that the regularization techniques improved the model’s robustness, making it a     more reliable       choice for deployment compared to the original model.
+1. **Data Preprocessing**: 
+   - Cleaned, standardized, and normalized the dataset to prepare it for classification.
 
-    <img width="905" alt="Screenshot 2024-11-13 at 00 23 23" src="https://github.com/user-attachments/assets/e6b74af2-debd-4f30-a9d6-4ab8ee6d530d">
+2. **Exploratory Data Analysis**:
+   - Analyzed relationships between features and the distribution of target classes.
+
+3. **Data Augmentation**:
+   - Employed augmentation techniques to balance class distribution for better model learning.
+
+4. **Model Building**:
+   - Developed a multi-class classification DNN model in PyTorch.
+
+5. **Hyperparameter Tuning**:
+   - Tuned model parameters (learning rate, optimizer, etc.) to achieve optimal results.
+
+6. **Training & Evaluation**:
+   - The model achieved high stability with 99.16% accuracy on the training set and 99.04% on the test set, demonstrating early convergence and minimal overfitting.
+
+   ![Model Accuracy Graph](https://github.com/user-attachments/assets/8fa191d9-6a55-4bdf-be5f-b98e7b214fdb)
+
+7. **Metrics Calculation**:
+   - Evaluated key metrics like accuracy, sensitivity, F1-score, and others for a comprehensive assessment.
+
+8. **Regularized Model Performance**:
+   - Applying regularization yielded improved accuracy (99.2%) and convergence stability across epochs, showing enhanced model generalization.
+
+   ![Regularized Model Graph](https://github.com/user-attachments/assets/e6b74af2-debd-4f30-a9d6-4ab8ee6d530d)
+
+---
+
+For more detailed insights and results, please explore the code and outputs provided in the attached files.
