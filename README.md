@@ -12,7 +12,8 @@ DNN-Regression-Classification-PyTorch
   Part 1 - Regression: New York Stock Exchange Dataset
   Part 2 - Multi-Class Classification: Predictive Maintenance Dataset
 3. Project Workflow
-**  Part 1: Regression **
+**   Part 1: Regression
+**   
     1. Exploratory Data Analysis: Initial analysis and visualizations for understanding features, distribution, and relationships within the NYSE dataset.
 
     2. Model Building: Design of a Deep Neural Network (DNN) using PyTorch for regression.
